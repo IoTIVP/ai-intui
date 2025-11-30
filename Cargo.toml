@@ -1,0 +1,11 @@
+[package]
+name = "ai-intui"
+version = "0.9.0"
+edition = "2021"
+description = "Ai-inTUI: AI/Robotics/Cloud/Data Forensics observability dashboard for the terminal (Rust + Crossterm + Ratatui)"
+
+[dependencies]
+crossterm = "0.27"
+ratatui = { version = "0.26", default-features = false, features = ["crossterm"] }
+rand = "0.8"
+humantime = "2.1"
