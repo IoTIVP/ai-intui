@@ -1,3 +1,12 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/version-v0.9.0-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/built_with-Rust-orange?style=for-the-badge&logo=rust" />
+  <img src="https://img.shields.io/badge/terminal-Ratatui-4B8BBE?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/backend-Crossterm-6E6E6E?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge" />
+</p>
+
+
 # Ai-inTUI
 
 **Ai-inTUI** is a Rust + Ratatui terminal dashboard for AI, robotics, cloud, and data forensics observability — inspired by Textual/Bubble Tea–style apps but built with **Crossterm + Ratatui only**.
