@@ -68,3 +68,23 @@ cd ai-intui
 cargo run
 
 Requires Rust 1.75+ (stable) and a terminal at least 80x24.
+
+
+## Roadmap
+
+### v0.9.x (Current Series)
+- Improve metrics rendering and visual consistency
+- Fine-tune layout spacing and borders
+- Add more realistic synthetic telemetry (less random)
+- Enhance command system (aliases, history)
+- Add optional color themes (cyberpunk / terminal)
+- Prepare GIF demo for the README
+
+### v1.0 Goals
+- Help overlay (instead of log-only help)
+- Configurable metrics update rates
+- Optional real data feeds
+- Windows/macOS/Linux binaries via GitHub Releases
+- Full crates.io publishing
+- Screenshot + GIF showcase
+- Plugin-style mode extensions
