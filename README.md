@@ -1,3 +1,12 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/rust-stable-orange?style=flat-square" alt="Rust Stable">
+  <img src="https://img.shields.io/github/actions/workflow/status/IoTIVP/ai-intui/ci.yml?style=flat-square&label=CI" alt="CI Status">
+  <img src="https://img.shields.io/badge/license-MIT-green.svg?style=flat-square" alt="License MIT">
+  <img src="https://img.shields.io/badge/version-0.9.0-blue?style=flat-square" alt="Version">
+</p>
+
+---
+
 # Ai-inTUI
 
 Ai-inTUI is a **Rust terminal dashboard** (Crossterm + Ratatui) for simulating
