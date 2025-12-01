@@ -61,10 +61,3 @@ cargo run
 
 Requires Rust 1.75+ (stable) and a terminal at least 80x24.
 
-
-Commit & push:
-
-```bash
-git add README.md
-git commit -m "Polish README for 0.9.0"
-git push
