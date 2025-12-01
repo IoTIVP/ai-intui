@@ -51,22 +51,9 @@ impl Mode {
     }
 }
 
-#[derive(Clone, Copy)]
-enum ColorProfile {
-    Cyberpunk,
-    Terminal,
-}
-
-impl Default for ColorProfile {
-    fn default() -> Self {
-        ColorProfile::Cyberpunk
-    }
-}
-
 struct AppState {
     start_time: Instant,
     mode: Mode,
-    color_profile: ColorProfile,
     logs: Vec<String>,
     cmd_input: String,
     cmd_active: bool,
@@ -75,13 +62,13 @@ struct AppState {
 
 impl AppState {
     fn new() -> Self {
-        let mut logs = Vec::new();
-        logs.push("ai-intui v0.9 — 1–5 to switch modes, : for command mode".into());
-        logs.push("commands: help / ?, clear, set mode <ai|robotics|cloud|forensics|sandbox>".into());
+        let logs = vec![
+            "ai-intui v0.9 — 1–5 to switch modes, : for command mode".into(),
+            "commands: help / ?, clear, set mode <ai|robotics|cloud|forensics|sandbox>".into(),
+        ];
         Self {
             start_time: Instant::now(),
             mode: Mode::AiObservability,
-            color_profile: ColorProfile::Cyberpunk,
             logs,
             cmd_input: String::new(),
             cmd_active: false,
@@ -235,8 +222,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                         // global exits (not in command mode)
                         KeyCode::Char('q') if !app.cmd_active => break,
                         KeyCode::Char('c')
-                            if !app.cmd_active
-                                && key.modifiers.contains(KeyModifiers::CONTROL) =>
+                            if !app.cmd_active && key.modifiers.contains(KeyModifiers::CONTROL) =>
                         {
                             break
                         }
@@ -376,13 +362,11 @@ fn draw_banner(f: &mut Frame, area: Rect, app: &AppState) {
     // LEFT: stable [1–5] hints + : command
     let left = {
         let hint = "[1] AI  [2] ROB  [3] CLD  [4] DFX  [5] SBX  |  : command";
-        Paragraph::new(hint)
-            .alignment(Alignment::Left)
-            .block(
-                Block::default()
-                    .borders(Borders::BOTTOM)
-                    .border_style(Style::default().fg(Color::DarkGray)),
-            )
+        Paragraph::new(hint).alignment(Alignment::Left).block(
+            Block::default()
+                .borders(Borders::BOTTOM)
+                .border_style(Style::default().fg(Color::DarkGray)),
+        )
     };
 
     // CENTER: Ai-inTUI + mode centered
@@ -421,13 +405,11 @@ fn draw_banner(f: &mut Frame, area: Rect, app: &AppState) {
                     .add_modifier(Modifier::BOLD),
             ),
         ]);
-        Paragraph::new(line)
-            .alignment(Alignment::Right)
-            .block(
-                Block::default()
-                    .borders(Borders::BOTTOM)
-                    .border_style(Style::default().fg(Color::DarkGray)),
-            )
+        Paragraph::new(line).alignment(Alignment::Right).block(
+            Block::default()
+                .borders(Borders::BOTTOM)
+                .border_style(Style::default().fg(Color::DarkGray)),
+        )
     };
 
     f.render_widget(left, cols[0]);
@@ -746,11 +728,7 @@ fn draw_logs(f: &mut Frame, area: Rect, app: &AppState) {
     let inner = block.inner(area);
 
     // Build Line list and keep only last N that fit
-    let mut lines: Vec<Line> = app
-        .logs
-        .iter()
-        .map(|s| Line::from(s.clone()))
-        .collect();
+    let mut lines: Vec<Line> = app.logs.iter().map(|s| Line::from(s.clone())).collect();
 
     let max_visible = inner.height.saturating_sub(1) as usize;
     if max_visible > 0 && lines.len() > max_visible {
@@ -779,7 +757,8 @@ fn draw_command(f: &mut Frame, area: Rect, app: &AppState) {
     let line: Line = if app.cmd_active {
         // Active command mode: show prompt + current input
         let prompt = format!(":> {}", app.cmd_input);
-        let hint = "  (help / ? / mode / set mode ai|robotics|cloud|forensics|sandbox • Esc to cancel)";
+        let hint =
+            "  (help / ? / mode / set mode ai|robotics|cloud|forensics|sandbox • Esc to cancel)";
         Line::from(vec![
             Span::styled(prompt, Style::default().fg(Color::White)),
             Span::styled(hint, Style::default().fg(Color::DarkGray)),
@@ -793,9 +772,7 @@ fn draw_command(f: &mut Frame, area: Rect, app: &AppState) {
         )])
     };
 
-    let para = Paragraph::new(line)
-        .block(block)
-        .wrap(Wrap { trim: true });
+    let para = Paragraph::new(line).block(block).wrap(Wrap { trim: true });
 
     // render on full area so text is visible
     f.render_widget(para, area);

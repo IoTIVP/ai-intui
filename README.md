@@ -58,6 +58,4 @@ cd ai-intui
 
 cargo run
 
-
 Requires Rust 1.75+ (stable) and a terminal at least 80x24.
-
