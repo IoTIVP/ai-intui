@@ -2,7 +2,16 @@
 name = "ai-intui"
 version = "0.9.0"
 edition = "2021"
-description = "Ai-inTUI: AI/Robotics/Cloud/Data Forensics observability dashboard for the terminal (Rust + Crossterm + Ratatui)"
+
+description = "Rust + Ratatui terminal dashboard for AI, robotics, cloud, and data forensics observability."
+license = "MIT"
+repository = "https://github.com/IoTIVP/ai-intui"
+homepage = "https://github.com/IoTIVP/ai-intui"
+readme = "README.md"
+
+categories = ["command-line-utilities", "visualization", "development-tools"]
+keywords   = ["tui", "ratatui", "observability", "dashboard", "terminal", "rust"]
+
 
 [dependencies]
 crossterm = "0.27"
