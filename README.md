@@ -6,6 +6,8 @@
 </p>
 
 ---
+![Ai-inTUI demo](assets/ai-intui-demo.png)
+
 
 # Ai-inTUI
 
